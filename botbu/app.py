@@ -1,11 +1,21 @@
+import re
 from chalice import Chalice
 
 app = Chalice(app_name='botbu')
 
+@app.route('/')
+def index():
+    return {'hell0': 'world'}
 
 @app.route('/buy_stock', methods=['POST'])
 def buy_stock():
-    return {'msg': 'I bought the stock'}
+    request = app.current_request
+    webhook_message = request.json_body
+
+    return {
+        'msg': 'I bought the stock',
+        'webhook_msg': webhook_message
+    }
 
 
 # The view function above will return {"hello": "world"}
