@@ -1,3 +1,9 @@
+# Api Keys
+aws_config.py
+
+#Venv
+venv37
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
