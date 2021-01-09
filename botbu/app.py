@@ -1,6 +1,6 @@
 import re
 from chalice import Chalice
-from test_order import order
+from chalicelib import test_order
 
 app = Chalice(app_name='botbu')
 
@@ -17,7 +17,7 @@ def buy_stock():
         'qty' : .01,
         'side' : 'sell'
     }
-    order_result, info = order(data['side'], data['qty'], data['symbol'])
+    order_result, info = test_order.order(data['side'], data['qty'], data['symbol'])
     if order_result:
         return {
             'msg': 'I sold the stock',
@@ -39,7 +39,7 @@ def buy_stock():
         'qty' : .01,
         'side' : 'buy'
     }
-    order_result, info = order(data['side'], data['qty'], data['symbol'])
+    order_result, info = test_order.order(data['side'], data['qty'], data['symbol'])
     if order_result:
         return {
             'msg': 'I bought the stock',

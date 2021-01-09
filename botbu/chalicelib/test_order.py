@@ -1,5 +1,5 @@
 import kucoin.client as kuclinet
-from api_creds import *
+from .api_creds import *
 
 order_ids=[]
 
@@ -13,7 +13,7 @@ def order(side, quantity, symbol):
     except Exception as e:
         print('Failed to place order')
         print(e.__cause__)
-        return (False, e)
+        return (False, str(e.__cause__))
     return (True, order)
 
 if __name__=='__main__':
