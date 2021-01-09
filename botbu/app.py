@@ -1,5 +1,6 @@
 import re
 from chalice import Chalice
+from test_order import order
 
 app = Chalice(app_name='botbu')
 
@@ -7,16 +8,43 @@ app = Chalice(app_name='botbu')
 def index():
     return {'hell0': 'world'}
 
+@app.route('/sell_stock', methods=['POST'])
+def buy_stock():
+    request = app.current_request
+    webhook_message = request.json_body
+    data = {
+        'symbol': webhook_message['ticker'],
+        'qty' : .01,
+        'side' : 'sell'
+    }
+    if order(data['side'], data['qty'], data['symbol']):
+        return {
+            'msg': 'I sold the stock',
+            'webhook_msg': webhook_message
+        }
+    return {
+            'msg': 'Failed to buy the stock',
+            'webhook_msg': webhook_message
+    }
+
 @app.route('/buy_stock', methods=['POST'])
 def buy_stock():
     request = app.current_request
     webhook_message = request.json_body
-
-    return {
-        'msg': 'I bought the stock',
-        'webhook_msg': webhook_message
+    data = {
+        'symbol': webhook_message['ticker'],
+        'qty' : .01,
+        'side' : 'buy'
     }
-
+    if order(data['side'], data['qty'], data['symbol']):
+        return {
+            'msg': 'I sold the stock',
+            'webhook_msg': webhook_message
+        }
+    return {
+            'msg': 'Failed to buy the stock',
+            'webhook_msg': webhook_message
+    }
 
 # The view function above will return {"hello": "world"}
 # whenever you make an HTTP GET request to '/'.

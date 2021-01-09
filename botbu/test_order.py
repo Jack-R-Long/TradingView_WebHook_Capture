@@ -1,11 +1,10 @@
 import kucoin.client as kuclinet
 from api_creds import *
 
-
-client = kuclinet.Client(KU_API_PUBLIC, KU_API_SECRET, KU_PASSPHRASE)
 order_ids=[]
 
 def order(side, quantity, symbol):
+    client = kuclinet.Client(KU_API_PUBLIC, KU_API_SECRET, KU_PASSPHRASE)
     try:
         print('\nSending order!')
         order = client.create_market_order(symbol, side, quantity)
