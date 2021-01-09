@@ -1,5 +1,6 @@
 # Api Keys
 aws_config.py
+./api_creds.py
 
 #Venv
 venv37

@@ -1,2 +1,3 @@
 .chalice/deployments/
 .chalice/venv/
+api_creds.py
