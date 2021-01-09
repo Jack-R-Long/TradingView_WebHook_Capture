@@ -17,13 +17,16 @@ def buy_stock():
         'qty' : .01,
         'side' : 'sell'
     }
-    if order(data['side'], data['qty'], data['symbol']):
+    order_result, info = order(data['side'], data['qty'], data['symbol'])
+    if order_result:
         return {
             'msg': 'I sold the stock',
+            'order_id' : info,
             'webhook_msg': webhook_message
         }
     return {
-            'msg': 'Failed to buy the stock',
+            'msg': 'Failed to sell the stock',
+            'error': info,
             'webhook_msg': webhook_message
     }
 
@@ -36,13 +39,16 @@ def buy_stock():
         'qty' : .01,
         'side' : 'buy'
     }
-    if order(data['side'], data['qty'], data['symbol']):
+    order_result, info = order(data['side'], data['qty'], data['symbol'])
+    if order_result:
         return {
-            'msg': 'I sold the stock',
+            'msg': 'I bought the stock',
+            'order_id' : info,
             'webhook_msg': webhook_message
         }
     return {
             'msg': 'Failed to buy the stock',
+            'error': info,
             'webhook_msg': webhook_message
     }
 

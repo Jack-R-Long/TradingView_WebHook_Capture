@@ -13,8 +13,8 @@ def order(side, quantity, symbol):
     except Exception as e:
         print('Failed to place order')
         print(e.__cause__)
-        return False
-    return True
+        return (False, e)
+    return (True, order)
 
 if __name__=='__main__':
     order('buy', .01, 'ETH-USDT' )
