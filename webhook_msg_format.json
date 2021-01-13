@@ -5,7 +5,11 @@
     "close": {{close}},
     "exchange": "{{exchange}}",
     "ticker": "{{ticker}}",
+    "quantity": 0.01,
     "volume": {{volume}},
     "time": "{{time}}",
-    "timenow": "{{timenow}}"
+    "timenow": "{{timenow}}",
+    "kucoin_api_public_key": "",
+    "kucoin_api__secret_key": "",
+    "kucoin_api_pass": ""
 }
