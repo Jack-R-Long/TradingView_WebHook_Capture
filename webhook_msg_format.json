@@ -5,7 +5,7 @@
     "close": {{close}},
     "exchange": "{{exchange}}",
     "ticker": "{{ticker}}",
-    "quantity": 0.01,
+    "quantity": "0.01",
     "volume": {{volume}},
     "time": "{{time}}",
     "timenow": "{{timenow}}",

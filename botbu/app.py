@@ -14,10 +14,13 @@ def buy_stock():
     webhook_message = request.json_body
     data = {
         'symbol': webhook_message['ticker'],
-        'qty' : .01,
-        'side' : 'sell'
+        'qty' : webhook_message['quantity'],
+        'side' : 'sell',
+        'kucoin_api_public_key': webhook_message['kucoin_api_public_key'],
+        'kucoin_api__secret_key' : webhook_message['kucoin_api__secret_key'],
+        'kucoin_api_pass' : webhook_message['kucoin_api_pass']
     }
-    order_result, info = test_order.order(data['side'], data['qty'], data['symbol'])
+    order_result, info = test_order.order(data)
     if order_result:
         return {
             'msg': 'I sold the stock',
@@ -36,10 +39,13 @@ def buy_stock():
     webhook_message = request.json_body
     data = {
         'symbol': webhook_message['ticker'],
-        'qty' : .01,
-        'side' : 'buy'
+        'qty' : webhook_message['quantity'],
+        'side' : 'buy',
+        'kucoin_api_public_key': webhook_message['kucoin_api_public_key'],
+        'kucoin_api__secret_key' : webhook_message['kucoin_api__secret_key'],
+        'kucoin_api_pass' : webhook_message['kucoin_api_pass']
     }
-    order_result, info = test_order.order(data['side'], data['qty'], data['symbol'])
+    order_result, info = test_order.order(data)
     if order_result:
         return {
             'msg': 'I bought the stock',

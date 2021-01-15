@@ -3,12 +3,13 @@ from .api_creds import *
 
 order_ids=[]
 
-def order(side, quantity, symbol):
-    client = kuclinet.Client(KU_API_PUBLIC, KU_API_SECRET, KU_PASSPHRASE)
-    fixed_symbol = eth_tick_fix(symbol)
+def order(data):
+    # client = kuclinet.Client(KU_API_PUBLIC, KU_API_SECRET, KU_PASSPHRASE)
+    client = kuclinet.Client(data['kucoin_api_public_key'], data['kucoin_api__secret_key'], data['kucoin_api_pass'])
+    fixed_symbol = eth_tick_fix(data['symbol'])
     try:
         print('\nSending order!')
-        order = client.create_market_order(fixed_symbol, side, quantity)
+        order = client.create_market_order(fixed_symbol, data['side'], data['qty'])
         print(order)
         order_ids.append(order)
     except Exception as e:
